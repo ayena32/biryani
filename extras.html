@@ -44,6 +44,7 @@
         <p>
             <b>Extras:</b> This page is still under development. There is a Python calculator and a geography quiz I made below but I will probably add more games or quizzes here.
         </p>
+        <div class="topsection">
         <div class="calculator">
         <input type="text" id="display" readonly>
 
@@ -69,8 +70,14 @@
             <button class="btn-num">0</button>
             <button class="btn-num">.</button>
             <button class="btn-equal" id="equal">=</button>
-        </div>
+        <br/>
+        <br/>
     </div>
+         <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 50%; min-height: 750px;"></iframe>
+        <h6>powered by <a href="https://forms.office.com">Microsoft Forms</a></h6>
+        <br/>
+        <br/>
+        </div>
     <div class="game-container">
     <h2>Guess the Number</h2>
     <p>Guess a number from 1-1000.</p>
@@ -138,11 +145,6 @@
         document.getElementById("submit_btn").style.display = "inline-block"
         document.getElementById("reset_btn").style.display = "none"
 </script>
-        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 100%; min-height: 750px;"></iframe>
-        <h6>powered by <a href="https://forms.office.com">Microsoft Forms</a></h6>
-        <br/>
-        <br/>
-        
 
     <script type="py">
         from pyscript import when, display, document
@@ -220,6 +222,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            min-height: 750px;
+            width: 50%;
         }
 
 
@@ -333,11 +337,14 @@ button {
     color: #666;
     margin-bottom: 10px;
 }
+.topsection {
+    display: inline-flex;
+}
     </style>
 
 </body>
-
 </html>
+
 
 
 
