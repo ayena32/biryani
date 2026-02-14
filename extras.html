@@ -44,9 +44,12 @@
         <p>
             <b>Extras:</b> This page is still under development. There is a Python calculator and a geography quiz I made below but I will probably add more games or quizzes here.
         </p>
-        <div class="calculator" style="width: 50%; display: inline-flex;">
+        <div id="extras" style="display: inline-flex">
+        <div id="geoquiz" style="width: 50%">
+        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 50%; min-height: 750px;"></iframe>
+        </div>
+        <div class="calculator" style="width: 50%">
         <input type="text" id="display" readonly>
-        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 100%; min-height: 750px;"></iframe>
         <div class="buttons">
             <button class="btn-clear" id="clear">AC</button>
             <button class="btn-op" id="divide">/</button>
@@ -69,6 +72,7 @@
             <button class="btn-num">0</button>
             <button class="btn-num">.</button>
             <button class="btn-equal" id="equal">=</button>
+        </div>
         </div>
     </div>
     <div class="game-container">
@@ -337,6 +341,7 @@ button {
 </body>
 
 </html>
+
 
 
 
