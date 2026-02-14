@@ -44,12 +44,9 @@
         <p>
             <b>Extras:</b> This page is still under development. There is a Python calculator and a geography quiz I made below but I will probably add more games or quizzes here.
         </p>
-        <div id="extras" style="display: inline-flex">
-        <div id="geoquiz" style="width: 50%">
-        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 50%; min-height: 750px;"></iframe>
-        </div>
-        <div class="calculator" style="width: 50%">
+        <div class="calculator">
         <input type="text" id="display" readonly>
+
         <div class="buttons">
             <button class="btn-clear" id="clear">AC</button>
             <button class="btn-op" id="divide">/</button>
@@ -73,7 +70,6 @@
             <button class="btn-num">.</button>
             <button class="btn-equal" id="equal">=</button>
         </div>
-        </div>
     </div>
     <div class="game-container">
     <h2>Guess the Number</h2>
@@ -82,7 +78,7 @@
     <button id="submit_btn" py-click="check_guess">Guess</button>
     <button id="reset_btn" py-click="reset_game" style="background-color: #6c757d; display: none; margin-top: 10px;">Reset</button>
     <div id="result"></div>
-    <div id="loading" class="loading">Your browser is downloading a mini version of Python to run this game. This can take a few seconds.</div>
+    <div id="loading" class="loading">Loading python..</div>
 </div>
 
 <script type="py">
@@ -142,6 +138,7 @@
         document.getElementById("submit_btn").style.display = "inline-block"
         document.getElementById("reset_btn").style.display = "none"
 </script>
+        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 100%; min-height: 750px;"></iframe>
         <h6>powered by <a href="https://forms.office.com">Microsoft Forms</a></h6>
         <br/>
         <br/>
@@ -341,9 +338,6 @@ button {
 </body>
 
 </html>
-
-
-
 
 
 
