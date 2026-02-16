@@ -14,6 +14,16 @@
     <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
 </head>
 <body>
+    <div class="newsline">
+    <div class="news-wrap">
+        <div class="news-move">
+            <div class="news-item">Welcome to the Biryani Tech website and Ramadhan Mubarak!</div>
+            <div class="news-item">HEADLINE: Did you know that if you draw a line on someone's forehead you've just made a headline, congratulations!</div>
+            <div class="news-item">Why was the ocean wet? Because the sea weed. Ok enough with the dad jokes now.</div>
+            <div class="news-item">Here are 500 digits of pi, 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949</div>
+    </div>
+    </div>
+    </div>
     <div id="top">
         <a href="https://biryani.pages.dev">
         <img id="logo" src="fartlogo.png" />
@@ -160,12 +170,56 @@
        text-transform: uppercase;
        font-family: Arial;
        }
+
+       .newsline {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI";
+        }
+
+        .news-wrap {
+         position: fixed;
+         top: 0;
+         width: 100%;
+         overflow: hidden; 
+         height: 3rem;
+         background-color: red; 
+         padding-left: 100%; 
+         box-sizing: border-box;
+         }
+
+
+         .news-move {
+         display: inline-block;
+         white-space: nowrap;
+         padding-right: 100%;
+         animation: ticker 35s linear infinite;
+         }
+
+         .news-item {
+          display: inline-block;
+          padding: 0 2rem;
+          font-size: 1.2rem;
+          color: white;
+          line-height: 3rem;
+          }
+
+ 
+          @keyframes ticker {
+          0% {
+              transform: translate3d(0, 0, 0);
+          }
+          100% {
+                transform: translate3d(-100%, 0, 0);
+          }
+          }
        </style>
 
 </body>
 </html>
 
   
+
 
 
 
