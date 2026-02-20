@@ -80,6 +80,128 @@
     <div id="result"></div>
     <div id="loading" class="loading">Loading python..</div>
 </div>
+    <div id="quiz-container">
+        <h2 id="question-text">Loading geography quiz...</h2>
+        <div id="options-container"></div>
+        <button id="submit-btn" py-click="check_answer" style="display: none;">Lock in answer</button>
+        <p id="result-message"></p>
+    </div>
+
+    <script type="py">
+        from pyscript import document
+
+        quiz_data = [
+            {
+                "question": "Which country borders, but doesn't enclave 2 micronations?",
+                "options": ["United Kingdom", "France", "Italy", "Spain"],
+                "answer": "France"
+            },
+            {
+                "question": "Which of these countries is landlocked?",
+                "options": ["Bosnia and Herzegovina", "Cambodia", "Uruguay", "Azerbaijan"],
+                "answer": "Azerbaijan"
+            },
+            {
+                "question": "Which country has cities called London, Paris, Banana and Poland?",
+                "options": ["Kiribati", "Canada", "New Zealand", "Christmas Island"],
+                "answer": "Kiribati"
+            },
+            {
+                "question": "Where is South Georgia and the South Sandwich Islands?",
+                "options": ["Africa", "Asia", "South America", "The middle of nowhere"],
+                "answer": "Africa"
+            },
+            {
+                "question": "Which of these countries has the LOWEST cost of living?",
+                "options": ["Morocco", "China", "Ukraine", "Bangladesh"],
+                "answer": "Bangladesh"
+            },
+            {
+                "question": "Which of these countries is forecasted to have an ageing population?",
+                "options": ["United States", "India", "South Korea", "Italy"],
+                "answer": "South Korea"
+
+            },
+            {
+                "question": "Which of these countries WASN'T colonised?",
+                "options": ["Italy", "Belize", "Liberia", "Spain"],
+                "answer": "Liberia"
+            },
+            {
+                "question": "What is the capital of Turkiye? (Turkey)",
+                "options": ["Ankara", "Istanbul", "Antalaya", "Bursa"],
+                "answer": "Ankara"
+            },
+            {
+                "question": "What is the capital of Liechtenstein?",
+                "options": ["Poznan", "Zurich", "Vaduz", "Liechtenstein"],
+                "answer": "Vaduz"
+            },
+            {
+                "question": "Which country borders the most countries?",
+                "options": ["Germany", "China", "United States", "Russia"],
+                "answer": "China"
+            }
+        ]
+
+        current_question_index = 0
+        score = 0
+
+        def load_question():
+            global current_question_index
+
+            if current_question_index < len(quiz_data):
+                q = quiz_data[current_question_index]
+
+                document.getElementById("question-text").innerText = q["question"]
+                document.getElementById("submit-btn").style.display = "block"
+
+                options_div = document.getElementById("options-container")
+                options_div.innerHTML = ""
+
+                for option in q["options"]:
+                    label = document.createElement("label")
+                    label.className = "option-label"
+
+                    radio = document.createElement("input")
+                    radio.type = "radio"
+                    radio.name = "quiz-option"
+                    radio.value = option
+
+                    label.appendChild(radio)
+                    label.append(f" {option}")
+                    options_div.appendChild(label)
+            else:
+                show_final_score()
+
+        def check_answer(event):
+            global current_question_index, score
+
+            selected = document.querySelector('input[name="quiz-option"]:checked')
+
+            if not selected:
+                document.getElementById("result-message").innerText = "Select an answer first!"
+                return
+
+            correct_answer = quiz_data[current_question_index]["answer"]
+            if selected.value == correct_answer:
+                score += 1
+
+            current_question_index += 1
+            document.getElementById("result-message").innerText = "" # Clear errors
+            load_question()
+
+        def show_final_score():
+            document.getElementById("question-text").innerText = "Quiz Completed!"
+            document.getElementById("options-container").innerHTML = ""
+            document.getElementById("submit-btn").style.display = "none"
+
+            result_element = document.getElementById("result-message")
+            result_element.id = "final-score"
+            result_element.innerText = f"Your score: {score} out of {len(quiz_data)}!"
+
+        load_question()
+    </script>
 
 <script type="py">
     import random
@@ -138,12 +260,11 @@
         document.getElementById("submit_btn").style.display = "inline-block"
         document.getElementById("reset_btn").style.display = "none"
 </script>
-        <iframe src="https://forms.office.com/r/WfxYAsqhwq" style="width: 100%; min-height: 750px;"></iframe>
-        <h6>powered by <a href="https://forms.office.com">Microsoft Forms</a></h6>
+        
         <br/>
         <br/>
         
-
+       
     <script type="py">
         from pyscript import when, display, document
 
@@ -333,11 +454,36 @@ button {
     color: #666;
     margin-bottom: 10px;
 }
+    #quiz-container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+    .option-label {
+        display: block;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+    #submit-btn {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    #result-message { color: black; font-weight: bold; margin-top: 15px; }
+    #final-score { color: #5cb85c; font-size: 1.2em; font-weight: bold; }
     </style>
 
 </body>
 
 </html>
+
 
 
 
