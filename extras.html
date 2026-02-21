@@ -90,90 +90,6 @@
     </div>
     <br/>
     <br/>
-    <h2>Concorde Flight Time Calculator</h2>
-<p>Click two points on the map. This will calculate the theoretical travel time between these 2 places on a Concorde at Mach 2.04 or 2158 km/h.</p>
-
-<div id="map"></div>
-
-<div class="panel">
-    <div id="status">Click 2 points on map</div>
-    <div id="result"></div>
-</div>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    let map = L.map('map').setView([40, -40], 3);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'OpenStreetMaps'
-    }).addTo(map);
-
-    let markers = [];
-    let coords = [];
-    let polyline = null;
-
-    map.on('click', function(e) {
-        if (markers.length >= 2) {
-            markers.forEach(m => map.removeLayer(m));
-            if (polyline) map.removeLayer(polyline);
-            markers = [];
-            coords = [];
-            document.getElementById('result').innerHTML = '';
-            document.getElementById('status').innerText = 'Point 1 selected. Click another point.';
-        }
-
-        let marker = L.marker(e.latlng).addTo(map);
-        markers.push(marker);
-        coords.push([e.latlng.lat, e.latlng.lng]);
-
-        if (markers.length === 1) {
-            document.getElementById('status').innerText = 'Point 1 selected. Choose another point.';
-        }
-
-        if (markers.length === 2) {
-            document.getElementById('status').innerText = 'Calculating travel time';
-            
-            polyline = L.polyline(coords, { color: 'red', dashArray: '10, 10' }).addTo(map);
-
-            if (window.calculate_concorde_time) {
-                window.calculate_concorde_time(coords[0][0], coords[0][1], coords[1][0], coords[1][1]);
-            } else {
-                document.getElementById('result').innerText = "Loading Pyscript";
-            }
-        }
-    });
-</script>
-
-<script type="py">
-    import math
-    from pyscript import window, document
-
-    def circle(lat1, lon1, lat2, lon2):
-        r = 6371
-        lat3, lat4 = math.radians(lat1), math.radians(lat2)
-        lats = math.radians(lat2 - lat1)
-        longs = math.radians(lon2 - lon1)
-
-        a = math.sin(lats/2)**2 + math.cos(lat3)*math.cos(lat4)*math.sin(longs/2)**2
-        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-
-        return r * c
-
-    def calculate_concorde_time(lat1, lon1, lat2, lon2):
-        dist_km = circle(lat1, lon1, lat2, lon2)
-        speed_kmh = 2158
-        time_hours = dist_km / speed_kmh
-
-        hours = int(time_hours)
-        minutes = int((time_hours - hours) * 60)
-
-
-        document.getElementById("status").innerText = "To travel from point A to point B it will take"
-        result_text = f"{hours} hours and {minutes} minutes<br/>Distance: {dist_km:,.0f} km"
-        document.getElementById("result").innerHTML = result_text
-
-
-    window.calculate_concorde_time = calculate_concorde_time
-</script>
     <br/>
     <br/>
     <h2>Riddle to unlock the secret page:</h2>
@@ -632,15 +548,12 @@ button {
     }
     #result-message { color: black; font-weight: bold; margin-top: 15px; }
     #final-score { color: #5cb85c; font-size: 1.2em; font-weight: bold; }
-    #map { height: 400px; width: 100%; margin-bottom: 20px; border-radius: 8px; border: 2px solid #ccc; }
-    .panel { padding: 20px; background-color: lightsteelblue; border-radius: 8px; text-align: center; }
-    #result { font-size: 1.2em; font-weight: bold; color: #d35400; margin-top: 10px; }
-    
     </style>
 
 </body>
 
 </html>
+
 
 
 
