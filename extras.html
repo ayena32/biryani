@@ -88,6 +88,193 @@
         <button id="submit-btn" py-click="check_answer" style="display: none;">Lock in answer</button>
         <p id="result-message"></p>
     </div>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #9074f2;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        select, #buttonc {
+            padding: 8px;
+            margin: 5px;
+            font-size: 16px;
+        }
+
+        #output {
+            background: #9074f2;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            max-width: 750px;
+            margin: auto;
+            text-align: left;
+            white-space: pre-line;
+        }
+
+    </style>
+
+    <h2>Cricket Match Simulator</h2>
+
+    Team 1:
+    <select id="team1"></select>
+
+    Team 2:
+    <select id="team2"></select>
+
+    <br>
+
+    Format:
+    <select id="format">
+        <option>T20 (20 Overs)</option>
+        <option>ODI (50 Overs)</option>
+        <option>Test (90 Overs, 1 Inning)</option>
+    </select>
+
+    <br>
+
+    <button id="buttonc" onclick="simulateMatch()">Start match</button>
+
+    <div id="output">Match summary</div>
+
+    <script>
+
+        const teams = [
+            "India", "Australia", "England", "Pakistan", "New Zealand",
+            "South Africa", "Sri Lanka", "Bangladesh", "Afghanistan",
+            "West Indies", "Ireland", "Zimbabwe", "Netherlands",
+            "Scotland", "UAE", "USA", "Canada", "Namibia"
+        ];
+
+        function loadTeams() {
+            let t1 = document.getElementById("team1");
+            let t2 = document.getElementById("team2");
+
+            teams.forEach(t => {
+                let o1 = document.createElement("option");
+                let o2 = document.createElement("option");
+                o1.text = t;
+                o2.text = t;
+                t1.add(o1);
+                t2.add(o2);
+            });
+
+            t2.selectedIndex = 1;
+        }
+        loadTeams();
+
+
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function toss(team1, team2) {
+            let winner = Math.random() < 0.5 ? team1 : team2;
+            let decision = Math.random() < 0.5 ? "bat" : "bowl";
+            return { winner, decision };
+        }
+
+  
+        function formatSettings(format) {
+
+            if (format === "T20") {
+                return {
+                    overs: 20,
+                    powerplay: 6,
+                    mid: 12,
+                    totalRange: [80, 250]
+                };
+            }
+
+            if (format === "ODI") {
+                return {
+                    overs: 50,
+                    powerplay: 10,
+                    mid: 30,
+                    totalRange: [150, 430]
+                };
+            }
+
+            return {
+                overs: 90,
+                powerplay: 25,
+                mid: 60,
+                totalRange: [150, 600]
+            };
+        }
+
+
+        function simulateInnings(team, settings) {
+
+            let finalTotal = rand(settings.totalRange[0], settings.totalRange[1]);
+
+            let powerplayRuns = Math.floor(finalTotal * rand(22, 30) / 100);
+            let midRuns = Math.floor(finalTotal * rand(60, 75) / 100);
+
+            let powerplayWkts = rand(0, 3);
+            let midWkts = powerplayWkts + rand(1, 3);
+            let finalWkts = rand(midWkts, 10);
+
+            return `
+${team} Innings
+Powerplay (${settings.powerplay} overs): ${powerplayRuns}/${powerplayWkts}
+Mid-innings (${settings.mid} overs): ${midRuns}/${midWkts}
+Final Score: ${finalTotal}/${finalWkts} (${settings.overs}.0 overs)
+`;
+        }
+
+        function simulateMatch() {
+
+            const team1 = document.getElementById("team1").value;
+            const team2 = document.getElementById("team2").value;
+            const format = document.getElementById("format").value;
+
+            if (team1 === team2) {
+                alert("Select different teams");
+                return;
+            }
+
+            const settings = formatSettings(format);
+
+            let output = ` ${format} Match\n${team1} vs ${team2}\n\n`;
+
+            let t = toss(team1, team2);
+            output += `${t.winner} won the toss and chose to ${t.decision} first.\n\n`;
+
+            let firstBat = t.decision === "bat"
+                ? t.winner
+                : (t.winner === team1 ? team2 : team1);
+
+            let secondBat = firstBat === team1 ? team2 : team1;
+
+            let inn1 = simulateInnings(firstBat, settings);
+            let score1 = parseInt(inn1.match(/Final Score: (\d+)/)[1]);
+
+            output += "--- First Innings ---\n";
+            output += inn1 + "\n";
+
+            let inn2 = simulateInnings(secondBat, settings);
+            let score2 = parseInt(inn2.match(/Final Score: (\d+)/)[1]);
+
+            output += "--- Second Innings ---\n";
+            output += inn2 + "\n";
+
+            output += "--- Result ---\n";
+
+            if (score2 > score1) {
+                output += `${secondBat} won the match`;
+            } else if (score1 > score2) {
+                output += `${firstBat} won by ${score1 - score2} runs`;
+            } else {
+                output += "Match Tied";
+            }
+
+            document.getElementById("output").textContent = output;
+        }
+
+    </script>
     <br/>
     <br/>
     <iframe src="concorde.html" scrolling="yes" style="min-height: 750px; width: 100%;" frameborder="0"></iframe>
@@ -555,6 +742,7 @@ button {
 </body>
 
 </html>
+
 
 
 
