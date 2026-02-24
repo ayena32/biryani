@@ -93,8 +93,6 @@
             font-family: Arial, sans-serif;
             background: #9074f2;
             color: white;
-            text-align: center;
-            padding: 20px;
         }
 
         select, #buttonc {
@@ -116,7 +114,7 @@
 
     </style>
 
-    <h2>Cricket Match Simulator</h2>
+    <h2>Cricket Match Simulator!</h2>
 
     Team 1:
     <select id="team1"></select>
@@ -128,16 +126,17 @@
 
     Format:
     <select id="format">
-        <option>T20 (20 Overs)</option>
-        <option>ODI (50 Overs)</option>
-        <option>Test (90 Overs, 1 Inning)</option>
+        <option>T20</option>
+        <option>ODI</option>
+        <option>Test</option>
+        <option>Hong Kong Sixes</option>
     </select>
 
     <br>
 
-    <button id="buttonc" onclick="simulateMatch()">Start match</button>
+    <button id="buttonc" onclick="simulateMatch()">Start Match</button>
 
-    <div id="output">Match summary</div>
+    <div id="output">Match summary will show up here when a match is started</div>
 
     <script>
 
@@ -145,7 +144,7 @@
             "India", "Australia", "England", "Pakistan", "New Zealand",
             "South Africa", "Sri Lanka", "Bangladesh", "Afghanistan",
             "West Indies", "Ireland", "Zimbabwe", "Netherlands",
-            "Scotland", "UAE", "USA", "Canada", "Namibia"
+            "Scotland", "UAE", "USA", "Canada", "Namibia", "Hong Kong"
         ];
 
         function loadTeams() {
@@ -203,6 +202,15 @@
                     powerplay: 25,
                     mid: 60,
                     totalRange: [150, 600]
+                };
+            }
+
+            if (format === "Hong Kong Sixes") {
+                return {
+                    overs: 6,
+                    powerplay: 1,
+                    mid: 3,
+                    totalRange: [30, 120]
                 };
             }
         }
@@ -744,6 +752,7 @@ button {
 </body>
 
 </html>
+
 
 
 
