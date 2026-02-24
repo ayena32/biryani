@@ -114,7 +114,7 @@
 
     </style>
 
-    <h2>Cricket Match Simulator!</h2>
+    <h2>International Cricket Match Simulator!</h2>
     <b>Note:</b> <p>This simulator is completely random and NOT based on things like real life team ability/strength or my opinions!</p>
 
     Team 1:
@@ -130,6 +130,8 @@
         <option>T20</option>
         <option>ODI</option>
         <option>Test</option>
+        <option>T10</option>
+        <option>The Hundred</option>
         <option>Hong Kong Sixes</option>
     </select>
 
@@ -211,7 +213,25 @@
                     overs: 6,
                     powerplay: 1,
                     mid: 3,
-                    totalRange: [30, 120]
+                    totalRange: [40, 120]
+                };
+            }
+            
+            if (format === "The Hundred") {
+                return {
+                    overs: 17,
+                    powerplay: 5,
+                    mid: 9,
+                    totalRange: [90, 210]
+                };
+            }
+            
+            if (format === "T10") {
+                return {
+                    overs: 10,
+                    powerplay: 3,
+                    mid: 5,
+                    totalRange: [50, 160]
                 };
             }
         }
@@ -753,6 +773,7 @@ button {
 </body>
 
 </html>
+
 
 
 
