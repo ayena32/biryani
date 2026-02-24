@@ -197,12 +197,14 @@
                 };
             }
 
-            return {
-                overs: 90,
-                powerplay: 25,
-                mid: 60,
-                totalRange: [150, 600]
-            };
+            if (format === "Test") {
+                return {
+                    overs: 90,
+                    powerplay: 25,
+                    mid: 60,
+                    totalRange: [150, 600]
+                };
+            }
         }
 
 
@@ -742,6 +744,7 @@ button {
 </body>
 
 </html>
+
 
 
 
