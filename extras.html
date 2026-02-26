@@ -83,7 +83,7 @@
     <br/>
     <br/>
     <div id="quiz-container">
-        <h2>Geography Quiz (20 Questions)</h2>
+        <h2>Geography Quiz (25 Questions)</h2>
         <h2 id="question-text">Loading geography quiz...</h2>
         <div id="options-container"></div>
         <button id="submit-btn" py-click="check_answer" style="display: none;">Lock in answer</button>
@@ -91,11 +91,12 @@
     </div>
     <br/>
     <h3>What score did you get?</h3>
-    <p>Terrible: 0-5 (0-25%)</p> <br/>
-    <p>Needs work: 6-9 (30-45%)</p> <br/>
-    <p>Solid, but could be better: 10-14 (50-70%)</p> <br/>
-    <p>Good boy: 15-17 (75-85%)</p> <br/>
-    <p>Geography nerd: 18-20 (90-100%)</p> <br/>
+    <p>Terrible: 0-7 (0-28%)</p>
+    <p>Needs work: 8-12 (32-48%)</p>
+    <p>Solid, but could be better: 13-16 (52-64%)</p>
+    <p>Good boy: 17-20 (68-85%)</p>
+    <p>Geography nerd: 21-25 (84-100%)</p>
+    <br/>
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -458,7 +459,7 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
             {   
                 "question": "Which country has the LOWEST birth rate?",
                 "options": ["Germany", "Japan", "Italy", "South Korea", "Iceland"],
-                "answer": "Iceland"
+                "answer": "South Korea"
             },
             {
                 "question": "What is the largest country in the Middle East by land area?",
@@ -479,6 +480,31 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
                 "question": "Excluding microstates, which country has the highest GNI (average income) per capita?",
                 "options": ["Switzerland", "United States", "Norway", "Ireland", "Singapore"],
                 "answer": "Norway"
+            },
+            {
+                "question": "Which country has the least airports?",
+                "options": ["Madagascar", "Afghanistan", "North Korea", "Andorra", "Bhutan"],
+                "answer": "Andorra"
+            },
+            {
+                "question": "How many countries start with the letter A?",
+                "options": ["12", "10", "14", "15", "13"],
+                "answer": "13"
+            },
+            {
+                "question": "Which country is the highest by average IQ score?",
+                "options": ["United States", "China", "Singapore", "Japan", "South Korea"],
+                "answer": "China"
+            },
+            {
+                "question": "Which of these countries has French as an official language?",
+                "options": ["French Guiana", "Djibouti", "Laos", "Syria", "New Caledonia"],
+                "answer": "Djibouti"
+            },
+            {
+                "question": "In the region of the Baltics, which country only has a flag with 2 colours?",
+                "options": ["Poland", "Estonia", "Latvia", "Lithuania", "Ukraine", "More than 1"],
+                "answer": "Latvia"
             }
         ]
 
@@ -820,6 +846,7 @@ button {
 </body>
 
 </html>
+
 
 
 
