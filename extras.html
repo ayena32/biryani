@@ -78,13 +78,13 @@
     <button id="submit_btn" py-click="check_guess">Guess</button>
     <button id="reset_btn" py-click="reset_game" style="background-color: #6c757d; display: none; margin-top: 10px;">Reset</button>
     <div id="result"></div>
-    <div id="loading" class="loading">Loading python..</div>
+    <div id="loading" class="loading">** Loading Python Libraries **</div>
 </div>
     <br/>
     <br/>
     <div id="quiz-container">
         <h2>Geography Quiz (25 Questions)</h2>
-        <h2 id="question-text">Loading geography quiz...</h2>
+        <h2 id="question-text">== Loading geography quiz ==</h2>
         <div id="options-container"></div>
         <button id="submit-btn" py-click="check_answer" style="display: none;">Lock in answer</button>
         <p id="result-message"></p>
@@ -149,7 +149,7 @@
 
     <button id="buttonc" onclick="simulateMatch()">Start Match</button>
 
-    <div id="output">====== Match summary will show up here when a match is started ======</div>
+    <div id="output">====== ! Match summary will show up here when a match is started ! ======</div>
 
     <script>
 
@@ -157,7 +157,7 @@
             "India", "Australia", "England", "Pakistan", "New Zealand",
             "South Africa", "Sri Lanka", "Bangladesh", "Afghanistan",
             "West Indies", "Ireland", "Zimbabwe", "Netherlands",
-            "Scotland", "UAE", "USA", "Canada", "Namibia", "Hong Kong", "Oman", "Nepal", "Kuwait", "Malaysia", "Papua New Guinea", "Thailand"
+            "Scotland", "UAE", "USA", "Canada", "Namibia", "Hong Kong", "Nepal"
         ];
 
         function loadTeams() {
@@ -232,7 +232,7 @@
                     overs: 17,
                     powerplay: 5,
                     mid: 9,
-                    totalRange: [90, 210]
+                    totalRange: [75, 210]
                 };
             }
             
@@ -847,6 +847,7 @@ button {
 </body>
 
 </html>
+
 
 
 
