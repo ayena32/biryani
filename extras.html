@@ -83,7 +83,7 @@
     <br/>
     <br/>
     <div id="quiz-container">
-        <h2>Geography Quiz (25 Questions)</h2>
+        <h2>Geography Quiz (30 Questions = 60 Marks)</h2>
         <h2 id="question-text">== Loading geography quiz ==</h2>
         <div id="options-container"></div>
         <button id="submit-btn" py-click="check_answer" style="display: none;">Lock in answer</button>
@@ -91,12 +91,12 @@
     </div>
     <br/>
     <h3>What score did you get?</h3>
-    <p>Terrible: 0-7 (0-28%)</p>
-    <p>Needs work: 8-11 (32-44%)</p>
-    <p>Solid, but could be better: 12-14 (48-56%)</p>
-    <p>Good: 15-17 (60-68%)</p>
-    <p>Very good: 18-20 (72-80%)</p>
-    <p>Geography nerd: 21-25 (84-100%)</p>
+    <p>Terrible: 0-17 (0-28%)</p>
+    <p>Needs work: 18-29 (30-48%)</p>
+    <p>Solid, but could be better: 30-38 (50-63%)</p>
+    <p>Good: 39-44 (65-73%)</p>
+    <p>Very good: 45-50 (75-82%)</p>
+    <p>Geography nerd: 51-60 (85-100%)</p>
     <br/>
         <style>
         body {
@@ -382,7 +382,7 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
 
         quiz_data = [
             {
-                "question": "Which country borders, but doesn't enclave 2 micronations?",
+                "question": "Section 1 - Countries, 50 marks Which country borders, but doesn't enclave 2 micronations?",
                 "options": ["United Kingdom", "France", "Italy", "Spain"],
                 "answer": "France"
             },
@@ -452,13 +452,8 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
                 "options":  ["55", "59", "60", "64", "65", "67"],
                 "answer": "59"
             },
-            {
-                "question": "Geography isn't just about countries, capitals and flags. What is the highest mountain located in one single country?",
-                "options": ["Mount Everest", "Aconcagua", "K2", "White Mountain (Dhaulagiri I)", "Mount Elbrus"],
-                "answer": "White Mountain (Dhaulagiri I)"
-            },
             {   
-                "question": "Which country has the LOWEST birth rate?",
+                "question": "Which of these countries has the LOWEST birth rate?",
                 "options": ["Germany", "Japan", "Italy", "South Korea", "Iceland"],
                 "answer": "South Korea"
             },
@@ -506,7 +501,40 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
                 "question": "In the region of the Baltics, which country only has a flag with 2 colours?",
                 "options": ["Poland", "Estonia", "Latvia", "Lithuania", "Ukraine", "More than 1"],
                 "answer": "Latvia"
-            }
+            },
+            {
+                "question": "Which of these countries has a Corruptions Perceptions Index above 70? Higher score = less corruption",
+                "options": ["South Korea", "United Kingdom", "Uruguay", "Austria", "Belgium"]
+                "answer": "Uruguay"
+            },
+            {
+                "question": "SECTION 2: Physical Geography, 10 marks. What is the highest mountain located in one single country?",
+                "options": ["Mount Everest", "Aconcagua", "K2", "White Mountain", "Mount Elbrus"],
+                "answer": "White Mountain"
+            },
+            {
+                "question": "Which of these was a SECONDARY effect of the Cyclone Idai in Mozambique, Zimbabwe, and Malawi?",
+                "options": ["All 17 healthcare centres in the port city of Beira were destroyed", "700,000 hectares of crops were destroyed, threatening food shortages", "Flash flooding destroyed 600 houses in Zimbabwe", "1300 people were killed", "More than half of Mozambique's population (24M) lives below the poverty line"],
+                "answer": "700,000 hectares of crops were destroyed, threatening food shortages"
+            },
+            {
+                "question": "Which of these is NOT a cause of deforestation in Malaysia",
+                "options": ["Palm oil plantations", "Tropical wood exports", "Logging", "Tribal farming", "Roads built for access to cities"],
+                "answer": "Roads built for access to cities"
+            },
+            {
+                "question": "Which of these is a coastal erosion landform?",
+                "options": ["Arete", "Corrie", "Grasshopper", "Headland", "Meander"],
+                "answer": "Headland"
+            },
+            {
+                "question": "What is a meander?",
+                "options": ["A long bend in a river", "A wonky river", "A river", "A wide bend in a river", "A lake near a river"],
+                "answer": "A wide bend in a river"
+            },
+        
+            
+            
         ]
 
         current_question_index = 0
@@ -550,20 +578,20 @@ olylglutamyllysylmethionylleucylalanylalanylleucyllysylvalylphenylalanylvalylglu
 
             correct_answer = quiz_data[current_question_index]["answer"]
             if selected.value == correct_answer:
-                score += 1
+                score += 2
 
-            current_question_index += 1
-            document.getElementById("result-message").innerText = "" # Clear errors
+            current_question_index += 2
+            document.getElementById("result-message").innerText = ""
             load_question()
 
         def show_final_score():
-            document.getElementById("question-text").innerText = "Quiz Completed!"
+            document.getElementById("question-text").innerText = "Quiz complete"
             document.getElementById("options-container").innerHTML = ""
             document.getElementById("submit-btn").style.display = "none"
 
             result_element = document.getElementById("result-message")
             result_element.id = "final-score"
-            result_element.innerText = f"Your score: {score} out of {len(quiz_data)}!"
+            result_element.innerText = f"Your score: {score} out of 60!"
 
         load_question()
     </script>
