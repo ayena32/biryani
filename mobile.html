@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Biryani Tech Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+    <meta property="og:image" content="https://biryani.pages.dev/fartlogo.png">
+    <meta property="og:title" content="Biryani Tech">
+    <meta property="og:description" content="It's in the name. Biryani and Tech.">
+    <link rel="stylesheet" href="stylefart.css">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script type="module" src="https://pyscript.net/releases/2024.3.1/core.js"></script>
+    
+    <style>
+        body {
+            background-image: url(backgroud.jpg);
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        #top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 5px;
+        }
+
+        #bar1 {
+            border-style: ridge;
+            border-width: 8px;
+            border-color: #7300ff;
+            padding: 10px;
+            margin: 3px;
+            width: 35%;
+            background-color: #9074f2;
+        }
+
+        #logo {
+            width: 80px;
+            height: 60px;
+            border: 10px ridge royalblue;
+            margin: 5px;
+        }
+
+        #content {
+            border: 10px ridge darkgoldenrod;
+            background-color: goldenrod;
+            padding: 15px 10px;
+            margin: 10px auto;
+            text-align: center;
+            color: white;
+            width: 95%; 
+            box-sizing: border-box; 
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.4;
+        }
+
+        a {
+            margin: 3px;
+            display: inline-block;
+        }
+
+        .downloads2 {
+            background-color: #6bcbff;
+            border: 3px ridge blue;
+            border-radius: 3px;
+            padding: 3px;
+            margin: 3px;
+            display: inline-flex;
+        }
+
+        .clock-container {
+            background-color: #8427f5;
+            border: 10px ridge #6527f5;
+            padding: 10px;
+            text-align: center;
+            box-sizing: border-box;
+            width: auto;
+            height: auto;
+        }
+
+        .time {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Arial;
+            color: #ffffff;
+        }
+
+        .date {
+            font-size: 15px;
+            color: #ffffff;
+            margin-top: 5px;
+            text-transform: uppercase;
+            font-family: Arial;
+        }
+
+        .newsline {
+            padding: 0;
+            font-family: "Segoe UI", Arial;
+        }
+
+        .news-wrap {
+            width: 100%;
+            overflow: hidden;
+            height: 3rem;
+            background-color: red;
+            padding-left: 100%;
+            box-sizing: border-box;
+        }
+
+        .news-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 55s linear infinite;
+        }
+
+        .news-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 1.2rem;
+            color: white;
+            line-height: 3rem;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        #content img {
+            max-width: 40px;
+            height: auto;
+            margin: 5px;
+        }
+
+        /*mobile css. happy now?*/
+        @media (max-width: 768px) {
+            #bar1 {
+                width: 90%;
+                height: auto !important;
+            }
+
+            #top a[style*="border"] {
+                transform: scale(0.95);
+                margin: 2px;
+            }
+
+            .time { font-size: 24px; }
+            .date { font-size: 12px; }
+            .news-item { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <a href="https://biryani.pages.dev">
+            <img id="logo" src="fartlogo.png" />
+        </a>
+        
+        <div id="bar1">
+           <abbr title="Biryani Tech publishes weekly news, reviews and articles, mainly about tech but sometimes cricket and humanities. There are also plenty of recipes and over 150 software downloads. There should be some tech guides and support articles soon but in the meantime, here's a banger biryani recipe and a Samsung spyware removal tutorial. Check out the Extras section for some quizzes, games and a riddle to unlock a secret page!"><i><u><b style="font-size: 28px;">Biryani Tech</b></u></i></abbr>
+        </div>
+        
+        <a href="https://biryani.pages.dev" style="border: 5px ridge firebrick; height: 80px; width: 60px">
+            <img src="home.png" style="height: 80px; width: 60px;" />
+        </a>
+        <a href="articles.html" style="border: 5px ridge orangered; height: 80px; width: 60px">
+            <img src="news.png" style="height: 80px; width: 60px;" />
+        </a>
+        <a href="recipes.html" style="border: 5px ridge darkgoldenrod; height: 80px; width: 60px">
+            <img src="recipes.png" style="height: 80px; width: 60px;" />
+        </a>
+        <a href="info.html" style="border: 5px ridge darkgreen; height: 80px; width: 60px">
+            <img src="about.png" style="height: 80px; width: 60px;" />
+        </a>
+        <a href="downloads.html" style="border: 5px ridge darkblue; height: 80px; width: 60px;">
+            <img src="downloads.png" style="height: 80px; width: 60px;">
+        </a>
+        <a href="extras.html" style="border: 5px ridge mediumturquoise; height: 80px; width: 60px">
+            <img src="extras.png" style="height: 80px; width: 60px;" />
+        </a>
+        <a href="tag.html" style="border: 5px ridge rgb(246, 6, 190); height: 80px; width: 60px">
+            <img src="tag.png" style="height: 80px; width: 60px;" />
+        </a>
+
+        <div class="clock-container">
+            <div class="time" id="clock-display"><em>00:00:00</em></div>
+            <div class="date" id="date-display">loading clock</div>
+        </div>
+        
+        <script>
+            function updateClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                let seconds = now.getSeconds();
+
+                hours = hours < 10 ? '0' + hours : hours;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                const timeString = `${hours}:${minutes}:${seconds}`;
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                const dateString = now.toLocaleDateString(undefined, options);
+
+                document.getElementById('clock-display').innerText = timeString;
+                document.getElementById('date-display').innerText = dateString;
+            }
+            updateClock();
+            setInterval(updateClock, 1000);
+        </script>
+    </div>
+
+    <div class="newsline">
+        <div class="news-wrap">
+            <div class="news-move">
+                <div class="news-item">Welcome to the Biryani Tech website!</div>
+                <div class="news-item">LATEST REVIEWS: Samsung Galaxy A54 5G still holds up very well in 2026 (Rating: Very good (80% // 4****), Read more in the news section! </div>
+                <div class="news-item">SPORTS/CRICKET: Why was Bangladesh kicked out of the T20 World Cup 2026? Full story in news/articles now</div>
+                <div class="news-item">INTERNATIONAL HEADLINES: Did you know that if you draw 2 lines on someone's forehead, on the border between 2 countries, you've just made international headlines, congratulations! </div>
+                <div class="news-item">Here are 500 digits of pi, 3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982148086513282306647093844609550582231725359408128481117450284102701938521105559644622948954930381964428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273724587006606315588174881520920962829254091715364367892590360011330530548820466521384146951941511609433057270365759591953092186117381932611793105118548074462379962749567351885752724891227938183011949 (yes the last digit was rounded)</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <p>
+           Biryani Tech publishes weekly news, reviews and articles, mainly about tech but sometimes cricket and humanities.
+           There are also plenty of recipes and over 150 software downloads. There should be some tech guides and support articles
+           soon but in the meantime, here's a banger biryani recipe and a Samsung spyware removal tutorial.
+           Check out the Extras section for some quizzes, games and a riddle to unlock a secret page!
+        </p>
+        <b>For phones/tablets: Please enable "Desktop site" in your browser for a better experience.
+           This website is still in the process of being optimised for mobile devices. Try increasing the zoom on PCs/laptops as this entire website was coded on an Asus ROG Ally with a 7" screen.</b>
+        <p>
+            <a href="https://youtube.com/@TheWindowsAddict" target="_blank">
+                <img src="yts.png">
+            </a>
+            <a href="https://x.com/ayena32" target="_blank">
+                <img src="x.png">
+            </a>                
+            <a href="https://discord.com/users/847930470163284019" target="_blank">
+                <img src="discord.png">
+            </a>
+            <a href="https://github.com/ayena32" target="_blank">
+                <img src="github.png">
+            </a>
+            <a href="mailto:biryanitech@zohomail.eu" target="_blank">
+                <img src="email.png">
+            </a>
+        </p>
+    </div>
+    
+    <img src="homepage.png" style="width: 100%; height: auto; min-height: 250px;">
+    
+</body>
+</html>
